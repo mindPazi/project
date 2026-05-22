@@ -16,20 +16,11 @@ function compute_fidelity(alice_slot, bob_slot)
 end
 
 """
-Run a single simulation and return (fidelity, distribution_time).
-Use `ideal=true` only for the instantaneous noiseless benchmark.
-"""
-function single_run(N::Int; p_success=1.0, p_w=0.0, ideal=false)
-    fidelity, dist_time, _ = single_run_detailed(N; p_success=p_success, p_w=p_w, ideal=ideal)
-    (fidelity, dist_time)
-end
-
-"""
-Run a single simulation and also return link generation times.
-Returns (fidelity, distribution_time, gen_times).
+Run a single simulation.
+Returns a NamedTuple with fields: fidelity, dist_time, gen_times.
 For `ideal=true`, generation is instantaneous and gen_times are all zero.
 """
-function single_run_detailed(N::Int; p_success=1.0, p_w=0.0, ideal=false)
+function single_run(N::Int; p_success=1.0, p_w=0.0, ideal=false)
     net = Network.create_network(N; depolarization_rate=p_w)
 
     if ideal
@@ -43,7 +34,7 @@ function single_run_detailed(N::Int; p_success=1.0, p_w=0.0, ideal=false)
     Swapping.perform_swapping!(net, N)
 
     fidelity = compute_fidelity(net[1][1], net[N + 2][1])
-    (fidelity, dist_time, gen_times)
+    (fidelity=fidelity, dist_time=dist_time, gen_times=gen_times)
 end
 
 """
@@ -55,9 +46,9 @@ function monte_carlo(N::Int, M::Int; p_success=1.0, p_w=0.0)
     times = Vector{Float64}(undef, M)
 
     for i in 1:M
-        f, t = single_run(N; p_success=p_success, p_w=p_w)
-        fidelities[i] = f
-        times[i] = t
+        result = single_run(N; p_success=p_success, p_w=p_w)
+        fidelities[i] = result.fidelity
+        times[i] = result.dist_time
     end
 
     (mean(fidelities), std(fidelities), mean(times), std(times))

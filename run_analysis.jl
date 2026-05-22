@@ -73,11 +73,11 @@ function monte_carlo_with_theory(N::Int, M::Int; p_success=1.0, p_w=0.0)
     f_app = Vector{Float64}(undef, M)
     times = Vector{Float64}(undef, M)
     for i in 1:M
-        f, t, gen_times = Metrics.single_run_detailed(N; p_success=p_success, p_w=p_w)
-        f_mc[i]  = f
-        f_wer[i] = fidelity_werner(gen_times, p_w)
-        f_app[i] = fidelity_approx(N, t, p_w)
-        times[i] = t
+        result = Metrics.single_run(N; p_success=p_success, p_w=p_w)
+        f_mc[i]  = result.fidelity
+        f_wer[i] = fidelity_werner(result.gen_times, p_w)
+        f_app[i] = fidelity_approx(N, result.dist_time, p_w)
+        times[i] = result.dist_time
     end
     (f_mc, f_wer, f_app, times)
 end
@@ -271,9 +271,9 @@ function analysis_emergent()
     fidelities = Float64[]
     times = Float64[]
     for _ in 1:M
-        f, t = Metrics.single_run(N; p_success=ps, p_w=pw)
-        push!(fidelities, f)
-        push!(times, t)
+        result = Metrics.single_run(N; p_success=ps, p_w=pw)
+        push!(fidelities, result.fidelity)
+        push!(times, result.dist_time)
     end
 
     println(@sprintf("\nN=%d, p_s=%.1f, p_w=%.2f, M=%d runs:", N, ps, pw, M))

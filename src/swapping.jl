@@ -1,27 +1,20 @@
 module Swapping
 
 using QuantumSavory
+using QuantumSavory.CircuitZoo: EntanglementSwap
 
 """
 Perform entanglement swapping across the entire chain of N repeaters.
-For each repeater: BSM on the 2 local qubits + Pauli corrections.
+For each repeater k (node k+1): BSM on its 2 local slots,
+with Alice (net[1][1]) as remoteL and the next node's slot 1 as remoteR.
+After all swaps, Alice's qubit is entangled with Bob's.
 """
 function perform_swapping!(net, N::Int)
-    # TODO: for k = 1..N, perform BSM and apply corrections
-end
-
-"""
-Perform a Bell-State Measurement on 2 qubits and return the outcome (2 classical bits).
-"""
-function bell_state_measurement!(qubit_a, qubit_b)
-    # TODO: CNOT + Hadamard + measurement
-end
-
-"""
-Apply Pauli corrections to Bob's qubit based on the BSM outcome.
-"""
-function apply_corrections!(qubit, outcome)
-    # TODO: apply X and/or Z based on outcome
+    swap = EntanglementSwap()
+    for k in 1:N
+        node = k + 1
+        swap(net[node][1], net[1][1], net[node][2], net[node + 1][1])
+    end
 end
 
 end # module

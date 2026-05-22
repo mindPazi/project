@@ -15,7 +15,7 @@ function create_network(N::Int; depolarization_rate=0.0)
         Register(
             fill(Qubit(), n_slots),
             fill(QuantumOpticsRepr(), n_slots),
-            fill(Depolarization(1 / depolarization_rate), n_slots)
+            fill(Depolarization(-1 / log(1 - depolarization_rate)), n_slots)
         )
     else
         Register(

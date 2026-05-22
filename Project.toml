@@ -1,5 +1,6 @@
 [deps]
 ConcurrentSim = "6ed1e86c-fcaf-46a9-97e0-2b26a2cdb499"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 QuantumClifford = "0525e862-1e90-11e9-3e4d-1b39d7109de1"

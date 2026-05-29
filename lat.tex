@@ -87,7 +87,9 @@ Prerequisites include a solid foundation in linear algebra (vector spaces, linea
 %% ============================================================
 \section{Single-Qubit System and Mathematical Framework}
 
-\subsection{What Is a Qubit?}
+\subsection{Qubits and State Space}
+
+\subsubsection*{What Is a Qubit?}
 
 A qubit is described as an abstract mathematical object with certain specific properties, giving freedom to construct a general theory independent of a specific physical realization. Just as a classical bit has a state, either 0 or 1, a qubit also has a state.
 
@@ -101,7 +103,7 @@ The states $\ket{0}$ and $\ket{1}$ correspond to the classical bit values 0 and 
 
 The difference between bits and qubits is that a qubit can be in a state other than $\ket{0}$ or $\ket{1}$. It is possible to form \emph{linear combinations of states}, often called \uline{\emph{superpositions}}: $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$.
 
-\subsection{Physical Realizations of Qubits}
+\subsubsection*{Physical Realizations of Qubits}
 
 A physical qubit exists at the atomic/subatomic level, and its behavior is described by the laws of quantum mechanics. There are many ways to realize a qubit physically:
 \begin{itemize}[nosep]
@@ -111,7 +113,7 @@ A physical qubit exists at the atomic/subatomic level, and its behavior is descr
 \end{itemize}
 The states $\ket{0}$ and $\ket{1}$ must be matched to the physical phenomena. The basis $\{\ket{0},\ket{1}\}$ is called the \emph{computational basis} or \emph{standard basis} and it is orthonormal.
 
-\subsection{State Space}
+\subsubsection*{State Space}
 
 \begin{tcolorbox}[propstyle, title={Postulate}]
 Associated to any isolated physical system is a complex vector space with inner product (a Hilbert space) known as the \emph{state space} of the system. The system is completely described by its \emph{state vector}, which is a unit vector in the system's state space.
@@ -125,7 +127,9 @@ This postulate can be ``customized'' for a qubit: associated to any isolated qub
 
 \textbf{Note:} \textbf{0} is not a quantum state since it is not normalizable, and will be the only vector in \textit{V} that does not correspond to a physical quantum state.
 
-\subsection{Complex Numbers Review}
+\subsection{Complex Numbers and Phase}
+
+\subsubsection*{Complex Numbers Review}
 
 Complex numbers $z=a+ib$ with $a,b\in\mathbb{R}$ and $i^2=-1$ can be represented in the complex plane. The polar representation is $z=re^{i\theta}$ where $r=|z|=\sqrt{a^2+b^2}$ is the modulus, and $\theta=\arg(z)$ is the argument. The complex conjugate is $z^*=a-ib$, so $|z|^2=zz^*=a^2+b^2$. Euler's formula gives $e^{i\theta}=\cos\theta+i\sin\theta$.
 
@@ -143,7 +147,7 @@ converges to some vector also in the space
     \label{fig:placeholder}
 \end{figure}
 
-\subsection{Global Phase and Relative Phase}
+\subsubsection*{Global Phase and Relative Phase}
 
 A general qubit state can be written as $\ket{\psi}=e^{i\gamma}(r_\alpha\ket{0}+r_\beta e^{i\phi}\ket{1})$ where:
 \begin{itemize}[nosep]
@@ -153,7 +157,9 @@ A general qubit state can be written as $\ket{\psi}=e^{i\gamma}(r_\alpha\ket{0}+
 For example, $\ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$ and $\ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$ differ by a relative phase factor of $-1$ on $\ket{1}$, and they are physically distinguishable.
 
 
-\subsection{Hilbert Spaces}
+\subsection{Hilbert Spaces and Dirac Notation}
+
+\subsubsection*{Hilbert Spaces}
 
 \begin{tcolorbox}[defstyle, title={Definition: Hilbert Space}]
 A \textbf{Hilbert space} is a real or complex vector space that has an inner product and is complete (every Cauchy sequence converges). In this course we work with finite-dimensional complex vector spaces $\mathbb{C}^n$.
@@ -165,11 +171,11 @@ A vector space $V$ over a field $K$ is a set satisfying: (1) closure under addit
 
 An element of $V=\mathbb{C}^n$ is denoted $\ket{z}$ (a \emph{ket vector}) and expressed as a column of $n$ complex numbers. The integer $n$ is the \emph{dimension} of the vector space.
 
-\subsection{Bases and Linear Independence}
+\subsubsection*{Bases and Linear Independence}
 
 A \emph{spanning set} for $V$ is a set $\{\ket{v_1},\dots,\ket{v_n}\}$ such that any vector can be written as a linear combination. Vectors are \emph{linearly dependent} if $\exists\, a_i$ (not all zero) with $\sum a_i\ket{v_i}=0$. A \emph{basis} is a linearly independent spanning set. Any two bases have the same number of elements (the dimension).
 
-\subsection{Dirac Notation: Bras, Kets, Inner and Outer Products}
+\subsubsection*{Dirac Notation: Bras, Kets, Inner and Outer Products}
 
 For every ket $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}=\binom{\alpha}{\beta}$, there is a corresponding \emph{bra} $\bra{\psi}=\ket{\psi}^\dagger=(\alpha^*,\beta^*)$.
 
@@ -213,7 +219,7 @@ This can be verified directly. For example, $\ket{0}\!\bra{0}+\ket{1}\!\bra{1}=\
 Note: $\{\ket{0},\ket{+}\}$ is NOT a complete orthonormal basis since $\ket{0}\!\bra{0}+\ket{+}\!\bra{+}\neq I$.
 \end{tcolorbox}
 
-\subsection{Gram--Schmidt Procedure}
+\subsubsection*{Gram--Schmidt Procedure}
 
 \begin{tcolorbox}[defstyle, title={Definition: Gram--Schmidt Procedure}]
 Given a basis $\{\ket{w_1},\dots,\ket{w_d}\}$, produce an orthonormal basis: $\ket{v_1}=\ket{w_1}/\|\ket{w_1}\|$, and inductively:
@@ -222,7 +228,9 @@ Given a basis $\{\ket{w_1},\dots,\ket{w_d}\}$, produce an orthonormal basis: $\k
 \]
 \end{tcolorbox}
 
-\subsection{Linear Operators and Matrices}
+\subsection{Linear Operators}
+
+\subsubsection*{Linear Operators and Matrices}
 
 \begin{tcolorbox}[defstyle, title={Definition: Linear Operator}]
 A \textbf{linear operator} $A:V\to W$ satisfies $A(\sum_i a_i\ket{v_i})=\sum_i a_i A\ket{v_i}$. The matrix elements are $A_{jk}=\bra{v_j}A\ket{v_k}$, and the outer-product representation is:
@@ -235,13 +243,13 @@ The identity operator satisfies $I\ket{v}=\ket{v}$; the zero operator maps all v
 
 \paragraph{Example:} The Pauli-$X$ matrix $X=\ket{0}\!\bra{1}+\ket{1}\!\bra{0}=\bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)$ exchanges $\ket{0}$ and $\ket{1}$: $X\ket{\psi}=\beta\ket{0}+\alpha\ket{1}$.
 
-\subsection{Eigenvectors and Eigenvalues}
+\subsubsection*{Eigenvectors and Eigenvalues}
 
 An \emph{eigenvector} of $A$ is a nonzero $\ket{v}$ with $A\ket{v}=\lambda\ket{v}$, where $\lambda$ is the \emph{eigenvalue}. The characteristic equation is $\det(A-\lambda I)=0$. A \emph{diagonal representation} is $A=\sum_i\lambda_i\ket{i}\!\bra{i}$.
 
 \paragraph{Example:} $Z=\ket{0}\!\bra{0}-\ket{1}\!\bra{1}$ has eigenvalues $+1$ (eigenvector $\ket{0}$) and $-1$ (eigenvector $\ket{1}$).
 
-\subsection{Adjoint and Hermitian Operators}
+\subsubsection*{Adjoint and Hermitian Operators}
 
 \begin{tcolorbox}[defstyle, title={Definition: Adjoint (Hermitian Conjugate)}]
 For matrix $A$, the adjoint is $A^\dagger=(A^*)^T$, i.e., $(A^\dagger)_{ij}=(A_{ji})^*$. Properties:
@@ -269,7 +277,7 @@ All eigenvalues of a Hermitian matrix are real. Two eigenvectors corresponding t
 For a Hermitian operator $A$: $\bra{v}A\ket{v}\in\mathbb{R}$ for all $\ket{v}$.
 \end{tcolorbox}
 
-\subsection{Projector Operators}
+\subsubsection*{Projector Operators}
 
 \begin{tcolorbox}[defstyle, title={Definition: Projector}]
 If $W$ is a $k$-dimensional subspace of $V$ with orthonormal basis $\{\ket{1},\dots,\ket{k}\}$, the projector onto $W$ is:
@@ -281,13 +289,13 @@ Properties: $P^\dagger=P$ (Hermitian), $P^2=P$ (idempotent). Eigenvalues are 0 o
 
 Two projectors $P_i,P_j$ are \emph{orthogonal} if $P_iP_j=0$. A set of orthogonal projectors is \emph{complete} if $\sum_i P_i=I$.
 
-\subsection{Normal and Unitary Operators}
+\subsubsection*{Normal and Unitary Operators}
 
 \begin{tcolorbox}[defstyle, title={Definition: Normal and Unitary Operators}]
 $A$ is \textbf{normal} if $AA^\dagger=A^\dagger A$. Every Hermitian operator is normal. $U$ is \textbf{unitary} if $U^\dagger U=UU^\dagger=I$. Unitary operators preserve inner products.
 \end{tcolorbox}
 
-\subsection{Positive Operators}
+\subsubsection*{Positive Operators}
 
 \begin{tcolorbox}[defstyle, title={Definition: Positive Operator}]
 An operator $A$ is \textbf{positive} (written $A\ge 0$) if $\bra{v}A\ket{v}\ge 0$ for all $\ket{v}$. If $\bra{v}A\ket{v}>0$ for all $\ket{v}\neq 0$, then $A$ is \textbf{positive definite}.
@@ -299,7 +307,7 @@ An operator $A$ is \textbf{positive} (written $A\ge 0$) if $\bra{v}A\ket{v}\ge 0
 
 By the spectral decomposition, a positive operator has the diagonal representation $A=\sum_i\lambda_i\ket{i}\!\bra{i}$ with $\lambda_i\ge 0$. This property is central to the definition of density operators ($\rho\ge 0$).
 
-\subsection{Direct Sums of Vector Spaces}
+\subsubsection*{Direct Sums of Vector Spaces}
 
 \begin{tcolorbox}[defstyle, title={Definition: Direct Sum}]
 The \textbf{direct sum} $V\oplus W$ of two vector spaces $V$ (dim $n$) and $W$ (dim $m$) with bases $\{\ket{\alpha_1},\ldots,\ket{\alpha_n}\}$ and $\{\ket{\beta_1},\ldots,\ket{\beta_m}\}$ is the vector space with basis $\{\ket{\alpha_1},\ldots,\ket{\alpha_n},\ket{\beta_1},\ldots,\ket{\beta_m}\}$. Every element $\ket{x}\in V\oplus W$ can be written as $\ket{x}=\ket{v}+\ket{w}$ for some $\ket{v}\in V$, $\ket{w}\in W$.
@@ -401,7 +409,9 @@ $\cos\frac{\theta}{2}=\frac{1}{\sqrt{2}}=\sin\frac{\theta}{2}\Rightarrow\frac{\t
 
 \textbf{Example:} $\ket{-i}=\frac{1}{\sqrt{2}}(\ket{0}-i\ket{1})$. Same $\theta=\pi/2$. $e^{i\phi}=-i\Rightarrow\phi=3\pi/2$. Point: $(\pi/2,3\pi/2)$, negative $y$-axis.
 
-\subsection{Tensor Products}
+\subsection{Tensor Products and Operator Functions}
+
+\subsubsection*{Tensor Products}
 
 \begin{tcolorbox}[defstyle, title={Definition: Tensor Product}]
 If $V$ (dim $m$) and $W$ (dim $n$) are Hilbert spaces, then $V\otimes W$ has dimension $mn$. If $\{\ket{i}\}$ and $\{\ket{j}\}$ are bases, then $\{\ket{i}\otimes\ket{j}\}$ is a basis for $V\otimes W$. The Kronecker product gives explicit matrix forms.
@@ -428,14 +438,14 @@ The slides prove the following properties in detail:
 \item \textbf{Property \#7:} $(A^\dagger)^\dagger = A$.
 \end{enumerate}
 
-\subsection{Commutator and Product of Hermitian Operators}
+\subsubsection*{Commutator and Product of Hermitian Operators}
 
 \begin{tcolorbox}[defstyle, title={Definition: Commutator}]
 The \textbf{commutator} of $A$ and $B$ is $[A,B]=AB-BA$. The product of two Hermitian operators is Hermitian if and only if $[A,B]=0$.
 \end{tcolorbox}
 
 
-\subsection{Spectral Theorem and Functions of Operators}
+\subsubsection*{Spectral Theorem and Functions of Operators}
 
 \begin{tcolorbox}[propstyle, title={Spectral Theorem (Finite Dimensional)}]
 An operator $A$ on a finite-dimensional Hilbert space is normal ($AA^\dagger=A^\dagger A$) if and only if it is diagonalizable with respect to an orthonormal basis:
@@ -455,7 +465,7 @@ In particular, $e^A=\sum_i e^{\lambda_i}\ket{i}\!\bra{i}$ and $\sqrt{A}=\sum_i\s
 
 This is used extensively in defining rotation gates: $e^{-i\theta Z/2}=e^{-i\theta/2}\ket{0}\!\bra{0}+e^{i\theta/2}\ket{1}\!\bra{1}=R_z(\theta)$.
 
-\subsection{Matrix Exponential Identity}
+\subsubsection*{Matrix Exponential Identity}
 
 \begin{tcolorbox}[propstyle, title={Proposition: Matrix Exponential for $A^2=I$}]
 For a matrix $A$ with $A^2=I$ and real $x$:
@@ -797,10 +807,12 @@ $\braket{\psi}{\psi}=1$, then for $\ket{\phi}=U\ket{\psi}$,
 
 A quantum gate U is always reversible i.e. if we apply a quantum gate U, we can undo the operation by applying $U^\dagger$.
 
-\subsection{Identity Gate}
+\subsection{Pauli and Phase Gates}
+
+\subsubsection*{Identity Gate}
 $I=\bigl(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\bigr)=\ket{0}\!\bra{0}+\ket{1}\!\bra{1}$. Does nothing: $I\ket{\psi}=\ket{\psi}$.
 
-\subsection{Pauli-$X$ Gate (NOT Gate, Bit Flip)}
+\subsubsection*{Pauli-$X$ Gate (NOT Gate, Bit Flip)}
 
 \begin{tcolorbox}[defstyle, title={Definition: Pauli-$X$ Gate}]
 \[
@@ -809,7 +821,7 @@ X = \begin{pmatrix}0&1\\1&0\end{pmatrix} = \ket{0}\!\bra{1}+\ket{1}\!\bra{0}.
 Action: $X\ket{0}=\ket{1}$, $X\ket{1}=\ket{0}$. On superposition: $X(\alpha\ket{0}+\beta\ket{1})=\beta\ket{0}+\alpha\ket{1}$. Called the \emph{bit flip} operator. $X^\dagger=X$, $X^2=I$.
 \end{tcolorbox}
 
-\subsection{Pauli-$Z$ Gate (Phase Flip)}
+\subsubsection*{Pauli-$Z$ Gate (Phase Flip)}
 
 \begin{tcolorbox}[defstyle, title={Definition: Pauli-$Z$ Gate}]
 \[
@@ -818,7 +830,7 @@ Z = \begin{pmatrix}1&0\\0&-1\end{pmatrix} = \ket{0}\!\bra{0}-\ket{1}\!\bra{1}.
 Action: $Z\ket{0}=\ket{0}$, $Z\ket{1}=-\ket{1}$. On superposition: $Z(\alpha\ket{0}+\beta\ket{1})=\alpha\ket{0}-\beta\ket{1}$. Called the \emph{phase flip}. $Z^\dagger=Z$, $Z^2=I$.
 \end{tcolorbox}
 
-\subsection{Pauli-$Y$ Gate}
+\subsubsection*{Pauli-$Y$ Gate}
 
 \begin{tcolorbox}[defstyle, title={Definition: Pauli-$Y$ Gate}]
 \[
@@ -827,7 +839,7 @@ Y = \begin{pmatrix}0&-i\\i&0\end{pmatrix} = -i\ket{0}\!\bra{1}+i\ket{1}\!\bra{0}
 Action: $Y\ket{0}=i\ket{1}$, $Y\ket{1}=-i\ket{0}$. It is the ``bit-and-phase flip''. $Y^\dagger=Y$, $Y^2=I$.
 \end{tcolorbox}
 
-\subsection{$S$ Gate and $T$ Gate}
+\subsubsection*{$S$ Gate and $T$ Gate}
 
 \begin{tcolorbox}[defstyle, title={Definition: $S$ (Phase) Gate}]
 \[
@@ -1020,7 +1032,7 @@ Since the total probability must be equal to \(1\), the coefficients satisfy
 \item $\Pr(1)=\frac{3}{16}+\frac{1}{16}=\frac{1}{4}$, post-state: $\frac{\sqrt{3}}{2}\ket{10}+\frac{1}{2}\ket{11}$.
 \end{itemize}
 
-\subsection{Projection Operators for Measurement}
+\subsubsection*{Projection Operators for Measurement}
 
 \begin{figure}[H]
     \centering
@@ -1051,7 +1063,7 @@ A measuring device with decomposition $V=S_1\oplus S_2\oplus\cdots\oplus S_k$ ac
 
 
 
-\subsection{Hermitian Operator Formalism for Measurement}
+\subsubsection*{Hermitian Operator Formalism for Measurement}
 An \textit{observable} in Quantum Mechanics is a physical property of a system that can be measured, such as position, momentum, energy or angular momentum.
 Observables are represented by Hermitian operators.
 
@@ -1576,7 +1588,7 @@ Three-qubit gate: $\ket{x,y,z}\to\ket{x,y,z\oplus(x\wedge y)}$. Flips third qubi
     \label{fig:placeholder}
 \end{figure}
 
-\subsection{Multi-Qubit Conditioning}
+\subsubsection*{Multi-Qubit Conditioning}
 
 For $n+k$ qubits with $U$ a $k$-qubit unitary:
 \[
@@ -2694,13 +2706,15 @@ Given $\ket{\Phi^+}_{12}$ (nodes A--B) and $\ket{\Phi^+}_{34}$ (B--C), a Bell me
 
 The quantum Internet connects quantum devices for: distributed quantum computation, quantum key distribution, clock synchronization, long-baseline interferometry, distributed quantum sensing.
 
-\subsection{Photon Loss Challenge}
+\subsection{Quantum Repeaters and Photon Loss}
+
+\subsubsection*{Photon Loss Challenge}
 
 Probability of successful photon transmission through fiber: $P_{\text{success}}=10^{-\alpha L/10}$ where $\alpha$ is attenuation (dB/km) and $L$ is distance (km). For $L=1000$~km, $\alpha=0.1$~dB/km: $P_{\text{success}}=10^{-10}$. At one photon/second, average wait time $\approx 317$ years.
 
 Classical solution (amplification) is forbidden by no-cloning. Quantum solution: quantum repeaters.
 
-\subsection{Quantum Circuit for Teleportation}
+\subsubsection*{Quantum Circuit for Teleportation}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{qcfor.png}
@@ -2728,13 +2742,15 @@ Its inverse $\mathrm{BELL}^\dagger=(H\otimes I)\cdot\mathrm{CNOT}$ does the oppo
 
 \paragraph{Example.} Suppose the two qubits are in state $\ket{\Psi^-}=\tfrac{1}{\sqrt{2}}(\ket{01}-\ket{10})$. Applying CNOT gives $\tfrac{1}{\sqrt{2}}(\ket{01}-\ket{11})=\tfrac{1}{\sqrt{2}}\ket{*1}(\ket{0}-\ket{1})$. Then $H$ on the first qubit maps $\ket{0}-\ket{1}\to\sqrt{2}\ket{1}$, yielding $\ket{11}$. Measuring gives outcome $(c,d)=(1,1)$, correctly identifying $\ket{\Psi^-}$.
 
-\subsection{Quantum Repeaters}
+\subsubsection*{Quantum Repeaters}
 
 A long fiber is segmented into short links of tens of kilometers, with quantum repeaters placed at each intermediate node. Entanglement is first distributed locally over each link, then extended across the full chain via entanglement swapping. Purification is applied throughout to maintain high fidelity.
 
 \uline{Teleportation is preferred over directly sending a physical qubit because it is more reliable.}
 
-\subsection{Stationary and Flying Qubits}
+\subsection{Entanglement Distribution and Swapping}
+
+\subsubsection*{Stationary and Flying Qubits}
 
 Two key challenges must be addressed:
 \begin{enumerate}[leftmargin=*, nosep]
@@ -2806,13 +2822,13 @@ The MIM discussion extends to:
   \item \textbf{MSM}: addition of an entangled photon pair source (e.g.\ Spontaneous Parametric Down-Conversion, SPDC).
 \end{itemize}
 
-\subsection{Entanglement Distribution}
+\subsubsection*{Entanglement Distribution}
 
 \begin{tcolorbox}[defstyle, title={Definition}]
 \textbf{Entanglement distribution} is the process of creating shared entangled pairs between two nodes separated by a quantum channel. A midpoint source generates entangled photon pairs and distributes them to both nodes.
 \end{tcolorbox}
 
-\subsection{Entanglement Swapping Circuit}
+\subsubsection*{Entanglement Swapping Circuit}
 
 \begin{figure}[H]
     \centering
@@ -2831,7 +2847,9 @@ Applying BSM (CNOT + $H$) on qubits 2,3:
 \]
 Correction operations ($I, X, Z, XZ$) at node C based on measurement outcomes yield $\ket{\Phi^+}_{14}$.
 
-\subsection{Link-Level Entanglement Architectures (MIM, MM, MSM)}
+\subsection{Photonic Link Architectures}
+
+\subsubsection*{Link-Level Entanglement Architectures (MIM, MM, MSM)}
 
 \begin{tcolorbox}[defstyle, title={Definition}]
 \begin{itemize}[nosep]
@@ -2842,7 +2860,7 @@ Correction operations ($I, X, Z, XZ$) at node C based on measurement outcomes yi
 With linear optics, BSA success probability $\leq 50\%$. Photons must arrive simultaneously.
 \end{tcolorbox}
 
-\subsection{Creating Pairs of Entangled Photons (EPS)}
+\subsubsection*{Creating Pairs of Entangled Photons (EPS)}
 
 \begin{tcolorbox}[defstyle, title={Definition}]
 Based on a \textbf{BBO} crystal via \textbf{spontaneous parametric down-conversion (SPDC)}:
@@ -2854,7 +2872,7 @@ Based on a \textbf{BBO} crystal via \textbf{spontaneous parametric down-conversi
 Emission rate: every 5--10~ns; probability of entangled pair: 0.1--0.5.
 \end{tcolorbox}
 
-\subsection{BSM of Photonic Qubits}
+\subsubsection*{BSM of Photonic Qubits}
 
 \begin{tcolorbox}[defstyle, title={Definition}]
 Implementation uses a non-polarizing beam splitter + two polarizing beam splitters + four detectors.
@@ -2866,7 +2884,7 @@ Implementation uses a non-polarizing beam splitter + two polarizing beam splitte
 With linear optics, success probability $\leq 50\%$ even with no photon loss.
 \end{tcolorbox}
 
-\subsection{Quantum Repeater Memory}
+\subsubsection*{Quantum Repeater Memory}
 
 \begin{tcolorbox}[defstyle, title={Definition}]
 Each repeater devotes memory qubits to each active link. Requirements:
@@ -2879,7 +2897,9 @@ Each repeater devotes memory qubits to each active link. Requirements:
 \textbf{Short-range entanglement system:} QM coupled to photon source; a \textbf{non-destructive photon detector} verifies emission without measuring the state. Temporal multiplexing via time slots increases the entanglement generation rate.
 \end{tcolorbox}
 
-\subsection{Werner States and Teleportation}
+\subsection{Entanglement Purification}
+
+\subsubsection*{Werner States and Teleportation}
 
 We will assume that the EPR pairs will not be maximally entangled but the gates and measurements are perfect. The teleportation is still possible but will not be perfect.
 
@@ -2917,7 +2937,7 @@ Over $n$ hops each with fidelity $F$: $\hat{F}_n=F^n$ (with appropriate correcti
 
 \paragraph{Performance metrics.} Beyond fidelity, relevant metrics include: (a) end-to-end delay (time to establish entanglement), and (b) entanglement generation rate (connections per time unit).
 
-\subsection{BBPSSW Purification Protocol}
+\subsubsection*{BBPSSW Purification Protocol}
 
 Given two imperfect Bell pairs with fidelity $F$ (bit-flip noise),
 Alice holds qubits $A_1,A_2$ and Bob holds $B_1,B_2$
@@ -2990,7 +3010,7 @@ M_{j_{\max}}=\prod_{j=1}^{j_{\max}}\frac{2}{p_s(j)},
 \]
 where $p_s(j)$ is the probability that the purification protocol succeeds at the $j$-th round. Starting from $M_{j_{\max}}$ connections: after round~1 we have $\sim M_{j_{\max}}p_s(1)/2$ pairs at fidelity $F_1$; after round~2 we have $\sim M_{j_{\max}}p_s(1)p_s(2)/4$ pairs at fidelity $F_2$; and so on. The fidelity after each round is computed iteratively: $F'=F^2/(F^2+(1-F)^2)$ for BBPSSW, with $p_s=F^2+(1-F)^2$.
 
-\subsection{DEJMPS Purification Protocol}
+\subsubsection*{DEJMPS Purification Protocol}
 
 Bennett's BBPSSW protocol has two drawbacks: (1) the initial state must be of Werner form, and (2) convergence is slow for low-fidelity initial pairs (e.g., from $F=0.85$ to $F>0.99$ requires many rounds).
 
@@ -3000,11 +3020,13 @@ Bennett's BBPSSW protocol has two drawbacks: (1) the initial state must be of We
 \item Does not require the initial state to be of Werner form.
 \end{itemize}
 
-\subsection{Linear vs Mesh Quantum Repeater Networks}
+\subsection{Quantum Networks and Protocol Stack}
+
+\subsubsection*{Linear vs Mesh Quantum Repeater Networks}
 
 The analysis so far has considered linear chains of quantum repeaters. However, the quantum internet will be a \textbf{mesh network}. This is not a limitation: once the routing protocol has selected a path from source to destination, the path is effectively a linear chain of repeaters. The four requirements for building a quantum network are: (1) link-level entanglement generation, (2) entanglement swapping for range extension, (3) purification for fidelity improvement, and (4) routing and multiplexing for resource allocation.
 
-\subsection{Routing and Multiplexing}
+\subsubsection*{Routing and Multiplexing}
 
 A quantum network must: (1) select paths for entanglement swapping (\textbf{routing}), and (2) serve multiple simultaneous connection requests (\textbf{multiplexing}).
 
@@ -3012,7 +3034,7 @@ Link-level cost is measured in seconds per Bell pair at a threshold fidelity. Pa
 
 Multiplexing handles contention when multiple end-to-end requests share the same link.
 
-\subsection{Quantum Internet Protocol Stack}
+\subsubsection*{Quantum Internet Protocol Stack}
 
 The protocol stack (Wehner et al.) is organized into five layers:
 \begin{enumerate}[nosep]
@@ -3030,7 +3052,9 @@ The protocol stack (Wehner et al.) is organized into five layers:
 %% ============================================================
 \section{Quantum Error Correction}
 
-\subsection{Three-Qubit Bit Flip Code}
+\subsection{Three-Qubit Codes}
+
+\subsubsection*{Three-Qubit Bit Flip Code}
 
 \begin{tcolorbox}[algostyle, title={Algorithm: 3-Qubit Bit Flip Code}]
 \textbf{Encoding:} $\ket{0}\to\ket{0_L}=\ket{000}$, $\ket{1}\to\ket{1_L}=\ket{111}$. Circuit: two CNOT gates.
@@ -3064,7 +3088,7 @@ $(0,1)$ & $X$ on qubit 2 & $I\otimes I\otimes X$ \\
 \end{tabular}
 \end{center}
 
-\subsection{Three-Qubit Phase Flip Code}
+\subsubsection*{Three-Qubit Phase Flip Code}
 
 Encoding: $\ket{0}\to\ket{+++}$, $\ket{1}\to\ket{, }$. Same circuit as bit flip but with Hadamard gates before and after syndrome extraction.
 
@@ -3101,13 +3125,15 @@ Apply $H_0, H_3, H_6$:
 \]
 \end{enumerate}
 
-\subsection{Types of Errors}
+\subsection{Types of Errors and Decoherence}
+
+\subsubsection*{Types of Errors}
 
 \paragraph{Bit flip:} Rotation about $x$-axis. Full flip = $X$ gate. Partial: rotation by angle $<\pi$.
 \paragraph{Phase flip:} Rotation about $z$-axis. Full flip = $Z$ gate. Changes relative phase.
 \paragraph{General:} Any combination. Since $\{I,X,Y,Z\}$ forms a basis for $2\times 2$ matrices, any single-qubit error can be decomposed into Pauli errors.
 
-\subsection{Decoherence}
+\subsubsection*{Decoherence}
 
 Small interactions with the environment move the qubit to a different location on the Bloch sphere. This is the biggest obstacle to large-scale quantum computing.
 

@@ -1,7 +1,5 @@
-"""
-Phase 5: Numerical vs theoretical analysis.
-Compares Monte Carlo results against analytical predictions.
-"""
+# Compares the Monte Carlo results against the analytical predictions:
+# exact/harmonic distribution time and Werner/plan-approx fidelity.
 
 include("src/network.jl")
 include("src/swapping.jl")
@@ -82,13 +80,9 @@ function monte_carlo_with_theory(N::Int, M::Int; p_success=1.0, p_w=0.0)
     (f_mc, f_wer, f_app, times)
 end
 
-# ============================================================
-#  1. Distribution time: MC vs exact vs harmonic approximation
-# ============================================================
+# Distribution time: MC vs exact vs harmonic approximation
 function analysis_distribution_time()
-    println("=" ^60)
-    println("  1. DISTRIBUTION TIME: numerical vs theory")
-    println("=" ^60)
+    println("Distribution time: Monte Carlo vs theory")
 
     p_values = 0.1:0.1:0.9
     N_values = [1, 3, 5]
@@ -126,16 +120,12 @@ function analysis_distribution_time()
         plot!(plt, ps_vec, harm_vals, ls=:dash, lw=1, label="H(N+1)/p N=$N", color=colors[idx], alpha=0.6)
     end
     savefig(plt, analysis_plot_path("analysis_time_comparison.png"))
-    println("\n  -> figures/analysis/analysis_time_comparison.png\n")
+    println("  saved figures/analysis/analysis_time_comparison.png\n")
 end
 
-# ============================================================
-#  2. Fidelity: MC vs Werner (per-run) vs plan approximation
-# ============================================================
+# Fidelity: MC vs Werner (per-run) vs plan approximation
 function analysis_fidelity()
-    println("=" ^60)
-    println("  2. FIDELITY: MC vs Werner vs plan approx")
-    println("=" ^60)
+    println("Fidelity: Monte Carlo vs Werner vs plan approximation")
 
     p_values = 0.1:0.1:1.0
     pw_values = [0.01, 0.05, 0.10]
@@ -185,16 +175,12 @@ function analysis_fidelity()
 
     plt = plot(plt1, plt2, layout=(1, 2), size=(1200, 450))
     savefig(plt, analysis_plot_path("analysis_fidelity_comparison.png"))
-    println("\n  -> figures/analysis/analysis_fidelity_comparison.png\n")
+    println("  saved figures/analysis/analysis_fidelity_comparison.png\n")
 end
 
-# ============================================================
-#  3. Fidelity scaling with N
-# ============================================================
+# Fidelity scaling with N
 function analysis_scaling_N()
-    println("=" ^60)
-    println("  3. FIDELITY SCALING WITH N")
-    println("=" ^60)
+    println("Fidelity scaling with N")
 
     N_range = 1:7
     ps_fixed = 0.5
@@ -227,16 +213,12 @@ function analysis_scaling_N()
     plot!(plt, ns, wer_vals, ls=:dash, lw=2, marker=:square, ms=3, label="Werner")
     plot!(plt, ns, app_vals, ls=:dot, lw=2, marker=:diamond, ms=3, label="Plan approx")
     savefig(plt, analysis_plot_path("analysis_scaling_N.png"))
-    println("\n  -> figures/analysis/analysis_scaling_N.png\n")
+    println("  saved figures/analysis/analysis_scaling_N.png\n")
 end
 
-# ============================================================
-#  4. N=1 closed form validation
-# ============================================================
+# N=1 closed form check
 function analysis_N1_closed_form()
-    println("=" ^60)
-    println("  4. N=1 CLOSED FORM VALIDATION")
-    println("=" ^60)
+    println("N=1 closed form check")
     println("\nFor N=1, T = max(Geo(p), Geo(p)).")
     println("E[T] = (3 - 2p) / (p(2-p))  [exact for max of 2 geometrics]\n")
 
@@ -255,13 +237,9 @@ function analysis_N1_closed_form()
     println()
 end
 
-# ============================================================
-#  5. Emergent effects: fidelity distribution shape
-# ============================================================
+# Fidelity distribution shape and fidelity-time correlation
 function analysis_emergent()
-    println("=" ^60)
-    println("  5. EMERGENT EFFECTS")
-    println("=" ^60)
+    println("Fidelity distribution and fidelity-time correlation")
 
     N = 3
     ps = 0.3
@@ -299,17 +277,11 @@ function analysis_emergent()
 
     plt = plot(p1, p2, p3, layout=(1, 3), size=(1500, 400))
     savefig(plt, analysis_plot_path("analysis_emergent.png"))
-    println("\n  -> figures/analysis/analysis_emergent.png\n")
+    println("  saved figures/analysis/analysis_emergent.png\n")
 end
 
-# ============================================================
-#  Main
-# ============================================================
 function main()
-    println("\n" * "=" ^60)
-    println("  PHASE 5: NUMERICAL vs THEORETICAL ANALYSIS")
-    println("  M = $M_RUNS Monte Carlo runs per data point")
-    println("=" ^60 * "\n")
+    println("Numerical vs theoretical analysis ($M_RUNS runs per point)\n")
 
     analysis_distribution_time()
     analysis_fidelity()
@@ -317,9 +289,7 @@ function main()
     analysis_N1_closed_form()
     analysis_emergent()
 
-    println("=" ^60)
-    println("  ANALYSIS COMPLETE")
-    println("=" ^60)
+    println("Figures written to figures/analysis/")
 end
 
 if abspath(PROGRAM_FILE) == abspath(@__FILE__)
